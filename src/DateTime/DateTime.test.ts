@@ -34,7 +34,7 @@ describe("DateTime should", () => {
       ).toBe("2020-03-30T12:00:00.000Z");
     });
 
-    it("for spring daylight savings day change", () => {
+    it("for autumn daylight savings day change", () => {
       expect(
         new DateTime("2020-10-25T12:00:00.000Z").nextDay().toString()
       ).toBe("2020-10-26T12:00:00.000Z");
