@@ -43,17 +43,27 @@ export class DateTime {
     return moment;
   }
 
-  previousDay(): DateTime {
-    const moment = DateTime.create(this.date);
-    moment.date.setDate(moment.date.getDate() - 1);
+  previousMonth(): DateTime {
+    const previousMonthTotalDays = this.getPreviousMonthTotalDays();
+    const moment = DateTime.create(
+      this.date.getTime() - this.oneDayInMs * previousMonthTotalDays
+    );
 
-    const diff = this.date.getTime() - moment.date.getTime();
-    if (diff > this.oneDayInMs) {
-      return DateTime.create(moment.date.getTime() + this.oneHourInMs);
+    const diff = this.date.getDate() - moment.date.getDate();
+    const monthNeedsAdjustment = diff === previousMonthTotalDays;
+
+    if (monthNeedsAdjustment) {
+      return DateTime.create(
+        moment.date.getTime() - this.oneDayInMs * moment.date.getDate()
+      );
     }
 
-    if (diff < this.oneDayInMs) {
-      return DateTime.create(moment.date.getTime() - this.oneHourInMs);
+    if (diff < 0) {
+      return DateTime.create(moment.date.getTime() - this.oneDayInMs * diff);
+    }
+
+    if (diff > 0) {
+      return DateTime.create(moment.date.getTime() + this.oneDayInMs * diff);
     }
 
     return moment;
@@ -83,6 +93,10 @@ export class DateTime {
 
   toString(): string {
     return this.date.toISOString();
+  }
+
+  private getPreviousMonthTotalDays(): number {
+    return new Date(this.date.getFullYear(), this.date.getMonth(), 0).getDate();
   }
 
   private getNextMonthTotalDays(): number {
