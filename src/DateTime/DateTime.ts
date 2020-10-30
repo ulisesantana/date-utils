@@ -11,6 +11,22 @@ export class DateTime {
     return new DateTime(date);
   }
 
+  previousDay(): DateTime {
+    const moment = DateTime.create(this.date);
+    moment.date.setDate(moment.date.getDate() - 1);
+
+    const diff = this.date.getTime() - moment.date.getTime();
+    if (diff > this.oneDayInMs) {
+      return DateTime.create(moment.date.getTime() + this.oneHourInMs);
+    }
+
+    if (diff < this.oneDayInMs) {
+      return DateTime.create(moment.date.getTime() - this.oneHourInMs);
+    }
+
+    return moment;
+  }
+
   nextDay(): DateTime {
     const moment = DateTime.create(this.date);
     moment.date.setDate(moment.date.getDate() + 1);
