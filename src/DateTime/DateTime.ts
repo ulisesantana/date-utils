@@ -27,6 +27,22 @@ export class DateTime {
     return moment;
   }
 
+  previousDay(): DateTime {
+    const moment = DateTime.create(this.date);
+    moment.date.setDate(moment.date.getDate() - 1);
+
+    const diff = this.date.getTime() - moment.date.getTime();
+    if (diff > this.oneDayInMs) {
+      return DateTime.create(moment.date.getTime() + this.oneHourInMs);
+    }
+
+    if (diff < this.oneDayInMs) {
+      return DateTime.create(moment.date.getTime() - this.oneHourInMs);
+    }
+
+    return moment;
+  }
+
   nextMonth(): DateTime {
     const nextMonthTotalDays = this.getNextMonthTotalDays();
     const moment = DateTime.create(
