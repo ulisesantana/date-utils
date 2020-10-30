@@ -99,6 +99,12 @@ describe("DateTime should", () => {
       new DateTime("2020-10-31T12:00:00.000Z").nextMonth().toString()
     ).toBe("2020-11-30T12:00:00.000Z");
     expect(
+      new DateTime("2020-01-31T12:00:00.000Z").nextMonth().toString()
+    ).toBe("2020-02-29T12:00:00.000Z");
+    expect(
+      new DateTime("2019-01-31T12:00:00.000Z").nextMonth().toString()
+    ).toBe("2019-02-28T12:00:00.000Z");
+    expect(
       new DateTime("2020-01-20T12:00:00.000Z").nextMonth().toString()
     ).toBe("2020-02-20T12:00:00.000Z");
     expect(
