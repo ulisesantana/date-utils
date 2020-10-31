@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run lint && tsc",
-    "docs": "typedoc --out docs src/index.ts",
+    "docs": "typedoc --out docs src",
     "docs:update": "npm run docs && git add docs && git commit -m \"\uD83D\uDCDD automated docs update\"",
     "lint": "./node_modules/.bin/eslint . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
