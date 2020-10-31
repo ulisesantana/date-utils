@@ -73,4 +73,11 @@ describe("SmartDate should", () => {
       ).toBe("2020-10-24T12:00:00.000Z");
     });
   });
+
+  it("check if a day is a weekend day", () => {
+    expect(new SmartDate("2020-10-30").isWeekend()).toBe(false);
+    expect(new SmartDate("2020-10-31").isWeekend()).toBe(true);
+    expect(new SmartDate("2020-11-01").isWeekend()).toBe(true);
+    expect(new SmartDate("2020-11-02").isWeekend()).toBe(false);
+  });
 });

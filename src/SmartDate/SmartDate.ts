@@ -1,14 +1,22 @@
 import { DayHelper, MonthHelper } from "helpers";
 
 export class SmartDate {
-  private readonly date: Date;
+  private readonly _date: Date;
 
   constructor(date: Date | string | number) {
-    this.date = new Date(date);
+    this._date = new Date(date);
   }
 
   static create(date: Date | string | number): SmartDate {
     return new SmartDate(date);
+  }
+
+  get date(): Date {
+    return new Date(this._date);
+  }
+
+  isWeekend(): boolean {
+    return DayHelper.isWeekend(this.date);
   }
 
   previousDay(): SmartDate {

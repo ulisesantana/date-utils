@@ -1,6 +1,11 @@
-import { oneDayInMs, oneHourInMs } from "helpers/constants";
+import { Day, oneDayInMs, oneHourInMs } from "helpers";
 
 export class DayHelper {
+  static isWeekend(date: Date): boolean {
+    const weekday = date.getDay();
+    return weekday === Day.Saturday || weekday === Day.Sunday;
+  }
+
   static previous(date: Date): Date {
     const moment = new Date(date);
     moment.setDate(moment.getDate() - 1);
