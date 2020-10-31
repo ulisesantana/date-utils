@@ -1,7 +1,7 @@
 import { SmartDate } from "./SmartDate";
 
 describe("SmartDate should", () => {
-  describe("be instantiated based on", () => {
+  describe("be instantiated with", () => {
     it("a Date", () => {
       expect(new SmartDate(new Date())).toBeInstanceOf(SmartDate);
     });
@@ -12,6 +12,10 @@ describe("SmartDate should", () => {
 
     it("a number of milliseconds", () => {
       expect(new SmartDate(1600000000)).toBeInstanceOf(SmartDate);
+    });
+
+    it("an empty constructor", () => {
+      expect(new SmartDate()).toBeInstanceOf(SmartDate);
     });
   });
 });

@@ -3,7 +3,7 @@ import { DayHelper, MonthHelper } from "helpers";
 export class SmartDate {
   private readonly _date: Date;
 
-  constructor(date: Date | string | number) {
+  constructor(date: Date | string | number = new Date()) {
     this._date = new Date(date);
   }
 
