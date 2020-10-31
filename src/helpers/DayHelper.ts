@@ -22,6 +22,16 @@ export class DayHelper {
     return moment;
   }
 
+  static previousWeekday(date: Date): Date {
+    const moment = DayHelper.previous(date);
+
+    if (DayHelper.isWeekend(moment)) {
+      return DayHelper.previousWeekday(moment);
+    }
+
+    return moment;
+  }
+
   static next(date: Date): Date {
     const moment = new Date(date);
     moment.setDate(moment.getDate() + 1);
@@ -30,6 +40,16 @@ export class DayHelper {
 
     if (diff < oneDayInMs) {
       return new Date(moment.getTime() + oneHourInMs);
+    }
+
+    return moment;
+  }
+
+  static nextWeekday(date: Date): Date {
+    const moment = DayHelper.next(date);
+
+    if (DayHelper.isWeekend(moment)) {
+      return DayHelper.nextWeekday(moment);
     }
 
     return moment;

@@ -23,8 +23,16 @@ export class SmartDate {
     return SmartDate.create(DayHelper.previous(this.date));
   }
 
+  previousWeekday(): SmartDate {
+    return SmartDate.create(DayHelper.previousWeekday(this.date));
+  }
+
   nextDay(): SmartDate {
     return SmartDate.create(DayHelper.next(this.date));
+  }
+
+  nextWeekday(): SmartDate {
+    return SmartDate.create(DayHelper.nextWeekday(this.date));
   }
 
   previousMonth(): SmartDate {

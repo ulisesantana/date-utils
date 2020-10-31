@@ -1,4 +1,5 @@
 import { SmartDate } from "./SmartDate";
+import { Day } from "../helpers";
 
 describe("SmartDate should", () => {
   describe("retrieve the next day", () => {
@@ -79,5 +80,59 @@ describe("SmartDate should", () => {
     expect(new SmartDate("2020-10-31").isWeekend()).toBe(true);
     expect(new SmartDate("2020-11-01").isWeekend()).toBe(true);
     expect(new SmartDate("2020-11-02").isWeekend()).toBe(false);
+  });
+
+  it("retrieve the next weekday", () => {
+    expect(new SmartDate("2020-10-29").nextWeekday().date.getDay()).toBe(
+      Day.Friday
+    );
+    expect(new SmartDate("2020-10-30").nextWeekday().date.getDay()).toBe(
+      Day.Monday
+    );
+    expect(new SmartDate("2020-10-31").nextWeekday().date.getDay()).toBe(
+      Day.Monday
+    );
+    expect(new SmartDate("2020-11-01").nextWeekday().date.getDay()).toBe(
+      Day.Monday
+    );
+    expect(new SmartDate("2020-11-02").nextWeekday().date.getDay()).toBe(
+      Day.Tuesday
+    );
+    expect(new SmartDate("2020-11-03").nextWeekday().date.getDay()).toBe(
+      Day.Wednesday
+    );
+    expect(new SmartDate("2020-11-04").nextWeekday().date.getDay()).toBe(
+      Day.Thursday
+    );
+    expect(new SmartDate("2020-11-05").nextWeekday().date.getDay()).toBe(
+      Day.Friday
+    );
+  });
+
+  it("retrieve the previous weekday", () => {
+    expect(new SmartDate("2020-10-29").previousWeekday().date.getDay()).toBe(
+      Day.Wednesday
+    );
+    expect(new SmartDate("2020-10-30").previousWeekday().date.getDay()).toBe(
+      Day.Thursday
+    );
+    expect(new SmartDate("2020-10-31").previousWeekday().date.getDay()).toBe(
+      Day.Friday
+    );
+    expect(new SmartDate("2020-11-01").previousWeekday().date.getDay()).toBe(
+      Day.Friday
+    );
+    expect(new SmartDate("2020-11-02").previousWeekday().date.getDay()).toBe(
+      Day.Friday
+    );
+    expect(new SmartDate("2020-11-03").previousWeekday().date.getDay()).toBe(
+      Day.Monday
+    );
+    expect(new SmartDate("2020-11-04").previousWeekday().date.getDay()).toBe(
+      Day.Tuesday
+    );
+    expect(new SmartDate("2020-11-05").previousWeekday().date.getDay()).toBe(
+      Day.Wednesday
+    );
   });
 });
