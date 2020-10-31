@@ -9,26 +9,27 @@
   ],
   "scripts": {
     "build": "npm run lint && tsc",
-    "docs:generate": "typedoc --out docs src",
+    "docs:generate": "typedoc",
     "docs:serve": "npm run docs:generate && serve docs",
     "docs:update": "npm run docs:generate && touch docs/.nojekyll && git add docs && git commit -m \"📝 update docs\"",
     "lint": "./node_modules/.bin/eslint . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
+    "prepublishOnly": "npm run build",
     "test": "jest",
     "test:coverage": "npm t -- --coverage",
     "test:tdd": "npm t -- --watchAll"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ulisesantana/ts-boilerplate.git"
+    "url": "git+https://github.com/ulisesantana/date-utils.git"
   },
   "keywords": [],
   "author": "Ulises Santana <ulisesantana@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ulisesantana/ts-boilerplate/issues"
+    "url": "https://github.com/ulisesantana/date-utils/issues"
   },
-  "homepage": "https://github.com/ulisesantana/ts-boilerplate#readme",
+  "homepage": "https://github.com/ulisesantana/date-utils#readme",
   "devDependencies": {
     "@types/jest": "^26.0.5",
     "@typescript-eslint/eslint-plugin": "^3.6.1",
