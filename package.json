@@ -11,7 +11,7 @@
     "build": "npm run lint && tsc",
     "docs:generate": "typedoc --out docs src",
     "docs:serve": "npm run docs:generate && serve docs",
-    "docs:update": "npm run docs:generate && git add docs && git commit -m \"📝 update docs\"",
+    "docs:update": "npm run docs:generate && touch docs/.nojekyll && git add docs && git commit -m \"📝 update docs\"",
     "lint": "./node_modules/.bin/eslint . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest",
